@@ -7,7 +7,7 @@ export const Input = styled.input`
   height: 48px;
   border: 1px solid ${colors.grey};
 
-  margin-left: 24px;
+  margin-left: 36px;
   padding: 0 28px;
   font-size: 19px;
   font-weight: 100;
@@ -18,6 +18,8 @@ export const Input = styled.input`
 
   &:focus {
     border: 1px solid ${colors.grey2};
-    width: 100%;
+    /* width: 100%; */
+    flex-grow: 1;
+    /* width: auto; */
   }
 `;

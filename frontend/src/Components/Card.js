@@ -6,9 +6,9 @@ export const Card = styled.div`
   width: ${gridWidth}px;
   height: auto;
   box-sizing: border-box;
-  padding: 24px 36px;
+  padding: 36px 48px;
   display: flex;
   flex-direction: column;
   background-color: ${colors.white};
-  border-radius: 4px;
+  border-radius: 6px;
 `;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { ResultsCard } from "./UI/ResultsCard";
 import { ListView } from "../../Components/ListView";
 import { ResultItem } from "./ResultItem";
@@ -41,18 +41,26 @@ const testData = [
 ];
 
 export const ResultsModule = ({ resultsShown }) => {
+  const [opacity, setOpacity] = useState(0);
+
+  useEffect(() => {
+    setOpacity(resultsShown === null ? 0 : 1);
+  }, [resultsShown]);
+
   return (
-    <ResultsCard resultsShown={resultsShown}>
-      <ListView
-        data={testData}
-        keyExtractor={({ id }) => `${id}`}
-        renderItem={({ title, price, data }, index) => (
-          <>
-            {index !== 0 && <ItemSeparator />}
-            <ResultItem title={title} price={price} data={data} />
-          </>
-        )}
-      />
-    </ResultsCard>
+    resultsShown && (
+      <ResultsCard opacity={opacity}>
+        <ListView
+          data={testData}
+          keyExtractor={({ id }) => `${id}`}
+          renderItem={({ title, price, data }, index) => (
+            <>
+              {index !== 0 && <ItemSeparator />}
+              <ResultItem title={title} price={price} data={data} />
+            </>
+          )}
+        />
+      </ResultsCard>
+    )
   );
 };
