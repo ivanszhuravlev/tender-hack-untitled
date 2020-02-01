@@ -9,15 +9,14 @@ import { ItemPrice } from "./UI/ItemPrice";
 import { ItemImage } from "./UI/ItemImage";
 import { ItemInfo } from "./ItemInfo";
 
-export const ResultItem = ({ title = "", price = "", data = {} }) => {
-  console.log("data", data);
+export const ResultItem = ({ title, category, subCategory, id, data }) => {
   return (
     <ItemContainer>
       <ItemImage src={image} />
       <ItemContent>
         <ItemTop>
           <ItemTitle>{title}</ItemTitle>
-          <ItemPrice>{price}</ItemPrice>
+          {/* <ItemPrice>{price}</ItemPrice> */}
         </ItemTop>
         <ItemBottom>
           {Object.keys(data).map((key, index) => (
