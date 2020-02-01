@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { longAnimationDurationMs } from "../../../constants/measures";
 
 export const Logo = styled.img`
   height: 100%;

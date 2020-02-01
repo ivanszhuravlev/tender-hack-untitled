@@ -5,7 +5,8 @@ import {
   inputHeight,
   inputPaddingTop,
   vHeight,
-  longAnimationDurationMs
+  longAnimationDurationMs,
+  gridWidth
 } from "../../../constants/measures";
 
 const marginCentral = vHeight / 2 - inputHeight / 2 - inputPaddingTop;
@@ -15,6 +16,8 @@ export const InputCard = styled(Card)`
   position: relative;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   transition: all ease-in-out ${longAnimationDurationMs}ms;
-  margin-top: ${({ isEmpty }) => (isEmpty === null ? marginCentral : 12)}px;
+  margin-top: ${({ resultsShown }) =>
+    resultsShown === null ? marginCentral : 12}px;
 `;
