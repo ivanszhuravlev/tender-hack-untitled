@@ -6,3 +6,5 @@ export const vHeight = window.innerHeight;
 
 export const longAnimationDurationMs = 400;
 export const shortAnimationDurationMs = 100;
+
+export const cardMargin = 36;
