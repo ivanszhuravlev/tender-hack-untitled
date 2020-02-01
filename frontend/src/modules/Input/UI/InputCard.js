@@ -20,4 +20,6 @@ export const InputCard = styled(Card)`
   transition: all ease-in-out ${longAnimationDurationMs}ms;
   margin-top: ${({ resultsShown }) =>
     resultsShown === null ? marginCentral : 12}px;
+
+  border-radius: 40px;
 `;

@@ -4,4 +4,8 @@ export const colors = {
   transparent: "rgba(0,0,0,0)",
   grey: "#dddddd",
   grey2: "#bbbbbb",
+  grey3: "#949494",
+  text1: "#343434",
+  text2: "#444444",
+  red: "#db2b21"
 };

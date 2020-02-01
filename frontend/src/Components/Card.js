@@ -10,5 +10,5 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
   background-color: ${colors.white};
-  border-radius: 8px;
+  border-radius: 4px;
 `;
