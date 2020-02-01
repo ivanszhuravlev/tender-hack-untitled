@@ -7,6 +7,8 @@ import LogoIcon from "../../assets/logo.svg";
 import { debounce } from "lodash";
 
 export const InputModule = ({ onStartFetch, resultsShown }) => {
+  const [isFocused, setIsFocused] = useState(false);
+
   const startSearching = event => {
     const value = event.target.value.trim();
     onStartFetch(value);
@@ -19,6 +21,8 @@ export const InputModule = ({ onStartFetch, resultsShown }) => {
     return debouncedStartSearching(event);
   };
 
+  const focusHandler = () => setIsFocused(true);
+
   return (
     <InputCard resultsShown={resultsShown}>
       <LogoContainer>
@@ -27,6 +31,8 @@ export const InputModule = ({ onStartFetch, resultsShown }) => {
       <Input
         placeholder={"Введите поисковый запрос"}
         onChange={changeHandler}
+        isFocused={isFocused}
+        onFocus={focusHandler}
       />
     </InputCard>
   );

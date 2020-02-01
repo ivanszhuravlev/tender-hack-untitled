@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { colors } from "../../../constants/colors";
 import { longAnimationDurationMs } from "../../../constants/measures";
 
@@ -16,10 +16,8 @@ export const Input = styled.input`
   border-radius: 30px;
   transition: all ease-in-out ${longAnimationDurationMs}ms;
 
-  &:focus {
-    border: 1px solid ${colors.grey2};
-    /* width: 100%; */
+  ${({isFocused}) => isFocused && css`
     flex-grow: 1;
-    /* width: auto; */
-  }
+    border: 1px solid ${colors.grey2};
+  `}
 `;
