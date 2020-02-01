@@ -1,0 +1,18 @@
+version: '3'
+ 
+services:
+ 
+  elasticsearch:
+    image: 'elasticsearch:6.6.0'
+    restart: always
+    environment:
+    - discovery.type=single-node
+    ports:
+    - '9200:9200'
+    - '9300:9300'
+    volumes:
+      - data01:/usr/share/elasticsearch/data
+
+volumes:
+  data01:
+    driver: local
