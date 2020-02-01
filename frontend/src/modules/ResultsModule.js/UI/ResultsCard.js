@@ -8,4 +8,5 @@ export const ResultsCard = styled(Card)`
   transition: all ease-in-out ${longAnimationDurationMs}ms
     ${longAnimationDurationMs}ms;
   opacity: ${({ resultsShown }) => (resultsShown === null ? 0 : 1)};
+  height: ${({ resultsShown }) => (resultsShown === null ? 0 : 'auto')};
 `;
