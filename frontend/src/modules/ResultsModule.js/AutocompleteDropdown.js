@@ -31,7 +31,7 @@ export const AutocompleteDropdown = ({
   const renderData = [...uniqBy(normalizedHistory, "item"), ...normalizedData];
 
   return (
-    visible && (
+    visible && !!renderData.length && (
       <Dropdown shown={shown} id={"input"}>
         {renderData.map((item, index) => (
           <AutocompleteDropdownItem

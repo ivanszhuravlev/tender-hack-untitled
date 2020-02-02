@@ -5,22 +5,11 @@ import styled from "styled-components";
 import { colors } from "../../../constants/colors";
 
 const data = [
-  { title: "aaaaaa", count: 12 },
-  { title: "bbbbbb", count: 12 },
-  { title: "cccccc", count: 12 },
-  { title: "ddddddd", count: 12 },
-  { title: "eeeeeee", count: 12 },
-  { title: "ffff", count: 12 },
-  { title: "gggggg", count: 12 },
-  { title: "hhhhhhhhh", count: 12 },
-  { title: "iiiiiii", count: 12 },
-  { title: "jjjjjj", count: 12 },
-  { title: "kkkkk", count: 12 },
-  { title: "lllllll", count: 12 },
-  { title: "mmmmmm mmmm", count: 12 },
-  { title: "nnnn", count: 12 },
-  { title: "ooooooo", count: 12 },
-  { title: "ppppp pp pppp p", count: 12 }
+  { title: "Бумажная продукция", count: 12 },
+  { title: "Счетчики", count: 10 },
+  { title: "Офисное оборудование", count: 6 },
+  { title: "Хозяйственное оборудование", count: 3 },
+  { title: "Оборудование для уборки", count: 1 },
 ];
 
 export const CategoriesModule = ({}) => {

@@ -21,7 +21,7 @@ export const searchReducer = (state = initialState, { type, payload }) => {
             page: payload.page
           }
         },
-        query: payload.query
+        query: console.log('reducer', payload.query) || payload.query
       };
 
     case SET_SEARCH_QUERY:

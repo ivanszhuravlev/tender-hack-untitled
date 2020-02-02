@@ -116,7 +116,7 @@ export const InputModule = ({
               id={"input"}
             />
           </InputContainer>
-          <SubmitButton onClick={submitHandler} />
+          <SubmitButton onClick={(e) => submitHandler(e.target.value)} />
         </FormContainer>
       </InputCard>
     </>

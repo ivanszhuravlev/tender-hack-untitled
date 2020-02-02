@@ -18,12 +18,12 @@ export const ResultsModule = ({}) => {
   const query = useSelector(selectSearchQuery);
   const page = useSelector(selectSearchPage);
   const data = useSelector(selectSearchDataListByValue);
-
+  console.log('select', query)
   useEffect(() => {
     setTimeout(() => setOpacity(1), 200);
   }, []);
 
-  const handleLoad = () => dispatch(getSearchResults(query, page));
+  const handleLoad = () => dispatch(getSearchResults(null, page));
 
   return (
     <ResultsCard opacity={opacity}>

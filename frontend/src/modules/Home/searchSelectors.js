@@ -9,7 +9,7 @@ export const selectSearchQuery = ({ searchResults }) => searchResults.query;
 
 export const selectSearchDataListByValue = createSelector(
   [selectSearchData, selectSearchQuery],
-  (data, query) => (data[query] ? data[query].list : [])
+  (data, query) => console.log(query) || (data[query] ? data[query].list : [])
 );
 
 export const selectSearchPage = createSelector(

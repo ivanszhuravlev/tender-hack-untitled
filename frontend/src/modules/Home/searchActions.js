@@ -6,15 +6,16 @@ export const getSearchResults = (searchQuery, passedPage) => async (
   getState
 ) => {
   const state = getState();
-  const query = state.searchResults.searchData[searchQuery] || {};
+  const string = searchQuery || state.searchResults.query
+  const query = state.searchResults.searchData[string] || {};
 
   const page = query.page || passedPage;
 
   return dispatch({
     type: SAVE_SEARCH_DATA,
     payload: {
-      data: await ApiService(ENDPOINTS.search)(searchQuery, page),
-      query: searchQuery,
+      data: await ApiService(ENDPOINTS.search)(string, page),
+      query: string,
       page: page + 1
     }
   });
