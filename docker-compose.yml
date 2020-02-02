@@ -16,3 +16,5 @@ services:
 volumes:
   data01:
     driver: local
+  data02:
+    driver: local
