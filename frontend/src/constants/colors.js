@@ -7,5 +7,7 @@ export const colors = {
   grey3: "#949494",
   text1: "#343434",
   text2: "#444444",
-  red: "#db2b21"
+  red: "#db2b21",
+  button: "#da015e",
+  buttonDark: "#c90054"
 };

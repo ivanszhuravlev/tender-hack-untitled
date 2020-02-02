@@ -46,7 +46,7 @@ const testData = [
 export const ResultsModule = ({ resultsShown }) => {
   const [opacity, setOpacity] = useState(0);
 
-  const data = useSelector(selectSearchDataByValue, []);
+  const data = useSelector(selectSearchDataByValue);
   console.log("data", data);
   useEffect(() => {
     setOpacity(resultsShown === null ? 0 : 1);
