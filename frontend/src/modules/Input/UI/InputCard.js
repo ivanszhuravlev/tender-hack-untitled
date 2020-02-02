@@ -12,7 +12,7 @@ import {
 const marginCentral = vHeight / 2 - inputHeight / 2 - inputPaddingTop;
 
 export const InputCard = styled(Card)`
-  padding: 12px 24px;
+  padding: 12px 48px;
   position: relative;
   flex-direction: row;
   align-items: center;

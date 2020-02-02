@@ -20,7 +20,7 @@ const Wrapper = styled.div`
 `;
 
 const Line = styled.div`
-  height: 48px;
+  height: 72px;
   /* border-bottom: 1px solid ${colors.grey}; */
   width: 240px;
 `;

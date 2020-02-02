@@ -16,7 +16,8 @@ export const LogoContainer = styled.div`
   padding: 12px 0;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   height: 60px;
   box-sizing: border-box;
+  width: 180px;
 `;
