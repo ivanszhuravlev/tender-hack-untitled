@@ -9,5 +9,6 @@ export const colors = {
   text2: "#444444",
   red: "#db2b21",
   button: "#da015e",
-  buttonDark: "#c90054"
+  buttonDark: "#c90054",
+  shadow: "rgba(0,0,0,0.4)"
 };
