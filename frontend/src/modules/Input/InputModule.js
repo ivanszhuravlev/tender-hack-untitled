@@ -19,14 +19,14 @@ export const InputModule = ({ onStartFetch, resultsShown }) => {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const [selectedDropdownItem, setSelectedDropdownItem] = useState(null);
 
-  const clickListener = (e) => {
+  const clickListener = e => {
     // console.log(e.target.id)
     e.target.id !== "input" && setIsDropdownVisible(false);
-  }
+  };
 
   useEffect(() => {
-    document.addEventListener('click', clickListener)
-  }, [])
+    document.addEventListener("click", clickListener);
+  }, []);
 
   const startSearching = event => {
     const value = event.target.value.trim();
@@ -37,8 +37,9 @@ export const InputModule = ({ onStartFetch, resultsShown }) => {
   const submitHandler = passedValue => {
     const val = passedValue || value;
     console.log(val);
-    val.trim().length && onStartFetch(value.trim());
+    val.trim().length && onStartFetch(val);
     setIsDropdownVisible(false);
+    setSelectedDropdownItem(null);
   };
 
   const debouncedStartSearching = debounce(event => startSearching(event), 500);
@@ -57,6 +58,7 @@ export const InputModule = ({ onStartFetch, resultsShown }) => {
   // const blurHandler = () => setIsDropdownVisible(false);
 
   const handleChooseItem = item => {
+    console.log("item", item);
     submitHandler(item);
     setValue(item);
   };

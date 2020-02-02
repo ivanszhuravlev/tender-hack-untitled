@@ -5,12 +5,21 @@ import {
   longAnimationDurationMs,
   shortAnimationDurationMs
 } from "../../constants/measures";
+import historyIcon from "../../assets/history.webp";
 
-export const AutocompleteDropdownItem = ({ text, selected, onClick }) => {
+export const AutocompleteDropdownItem = ({
+  text,
+  selected,
+  onClick,
+  isHistory
+}) => {
   return (
-    <Item selected={selected} onClick={onClick}>
-      {text}
-    </Item>
+    <Container>
+      {isHistory ? <Icon src={historyIcon} /> : <Whitespace />}
+      <Item selected={selected} onClick={onClick}>
+        {text}
+      </Item>
+    </Container>
   );
 };
 
@@ -25,12 +34,30 @@ const Item = styled.div`
 
   cursor: pointer;
   &:hover {
-    background-color: ${colors.grey2};
+    background-color: ${colors.grey};
   }
 
   ${({ selected }) =>
     selected &&
     css`
-      background-color: ${colors.grey2};
+      background-color: ${colors.grey};
     `}
+`;
+
+const Icon = styled.img`
+  /* height: 18px; */
+  width: 14px;
+  margin-right: 4px;
+  opacity: 0.4;
+`;
+
+const Whitespace = styled.div`
+  width: 14px;
+  margin-right: 4px;
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 `;

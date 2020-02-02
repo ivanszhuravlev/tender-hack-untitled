@@ -3,24 +3,39 @@ import styled from "styled-components";
 import { colors } from "../../constants/colors";
 import { AutocompleteDropdownItem } from "./AutocompleteDropdownItem";
 import { longAnimationDurationMs } from "../../constants/measures";
+import { useSelector } from "react-redux";
+import { selectHistory } from "../Home/searchSelectors";
 
-export const AutocompleteDropdown = ({ data, selectedItem, visible, onChooseItem }) => {
+export const AutocompleteDropdown = ({
+  data,
+  selectedItem,
+  visible,
+  onChooseItem
+}) => {
   const [shown, setShown] = useState(false);
+  const history = useSelector(selectHistory);
 
+  const normalizedHistory = history.filter(item => !!item).map(item => ({ item, history: true }));
+
+  const normalizedData = data.slice(0, 7).map(item => ({ item, history: false }));
+  console.log(selectedItem)
   useEffect(() => {
-    visible && setShown(true)
+    visible && setShown(true);
   }, [visible]);
+
+  const renderData = [...normalizedHistory, ...normalizedData];
 
   return (
     visible && (
       <Dropdown shown={shown} id={"input"}>
-        {data.map((item, index) => (
+        {renderData.map((item, index) => (
           <AutocompleteDropdownItem
             key={item}
-            text={item}
+            text={item.item}
+            isHistory={item.history}
             selected={selectedItem === index}
             id={"input"}
-            onClick={() => onChooseItem(item)}
+            onClick={() => onChooseItem(item.item)}
           />
         ))}
       </Dropdown>

@@ -1,2 +1,4 @@
 export const SAVE_SEARCH_DATA = "SAVE_SEARCH_DATA";
 export const SET_SEARCH_QUERY = "SET_SEARCH_QUERY";
+export const SAVE_HISTORY = "SAVE_HISTORY"
+export const GET_HISTORY = "GET_HISTORY"
