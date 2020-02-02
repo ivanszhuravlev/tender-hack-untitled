@@ -16,7 +16,7 @@ export const InputCard = styled(Card)`
   position: relative;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   transition: all ease-in-out ${longAnimationDurationMs}ms;
   margin-top: ${({ resultsShown }) =>
     resultsShown === null ? marginCentral : 12}px;
