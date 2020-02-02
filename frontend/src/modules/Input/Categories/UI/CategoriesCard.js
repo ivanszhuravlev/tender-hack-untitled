@@ -12,5 +12,9 @@ export const CategoriesCard = styled(Card)`
   transition: all ease-in-out ${longAnimationDurationMs}ms
     ${longAnimationDurationMs}ms;
   opacity: ${({ opacity }) => opacity};
-  margin-bottom: ${cardMargin}px;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 36px 48px 24px 48px;
 `;

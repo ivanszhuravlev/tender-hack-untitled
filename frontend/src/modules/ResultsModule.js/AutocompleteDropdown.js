@@ -5,6 +5,7 @@ import { AutocompleteDropdownItem } from "./AutocompleteDropdownItem";
 import { longAnimationDurationMs } from "../../constants/measures";
 import { useSelector } from "react-redux";
 import { selectHistory } from "../Home/searchSelectors";
+import { uniqBy } from "lodash";
 
 export const AutocompleteDropdown = ({
   data,
@@ -15,15 +16,19 @@ export const AutocompleteDropdown = ({
   const [shown, setShown] = useState(false);
   const history = useSelector(selectHistory);
 
-  const normalizedHistory = history.filter(item => !!item).map(item => ({ item, history: true }));
+  const normalizedHistory = history
+    .filter(item => !!item)
+    .map(item => ({ item, history: true }));
 
-  const normalizedData = data.slice(0, 7).map(item => ({ item, history: false }));
-  console.log(selectedItem)
+  const normalizedData = data
+    .slice(0, 7)
+    .map(item => ({ item, history: false }));
+  console.log(selectedItem);
   useEffect(() => {
     visible && setShown(true);
   }, [visible]);
 
-  const renderData = [...normalizedHistory, ...normalizedData];
+  const renderData = [...uniqBy(normalizedHistory, "item"), ...normalizedData];
 
   return (
     visible && (
