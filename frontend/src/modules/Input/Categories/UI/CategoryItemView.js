@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import {
   longAnimationDurationMs,
   cardMargin
@@ -6,21 +6,29 @@ import {
 import { colors } from "../../../../constants/colors";
 
 export const CategoryItemView = styled.div`
-  height: 32px;
-  padding: 0 16px;
+  /* height: 32px; */
+  padding: 0px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  margin-right: ${({ hasMargin }) => (hasMargin ? 12 : 0)}px;
-  margin-bottom: 12px;
+  /* border-radius: 20px; */
 
-  border: 1px solid ${colors.grey2};
-  border-radius: 20px;
+  color: ${colors.grey3};
+  font-size: 15px;
 
-  color: ${colors.grey2};
-  font-size: 14px;
+  border-bottom: 1px solid ${colors.transparent};
+
+  &:hover {
+    color: ${colors.button};
+  }
+
+  ${({selected}) => selected && css`
+    color: ${colors.button};
+    border-bottom: 1px solid ${colors.button};
+
+  `}
 
   cursor: pointer;
 `;
