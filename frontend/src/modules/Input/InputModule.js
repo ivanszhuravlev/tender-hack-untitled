@@ -8,16 +8,22 @@ import { debounce } from "lodash";
 import { SubmitButton } from "./SubmitButton";
 import { FormContainer } from "./UI/FormContainer";
 import { AutocompleteDropdown } from "../ResultsModule.js/AutocompleteDropdown";
+import { ApiService, ENDPOINTS } from "../../services/ApiService";
 
 const data = ["one", "rwo", "three", "four", "five", "six", "seven"];
 const keyUp = 38;
 const keyDown = 40;
 
-export const InputModule = ({ onStartFetch, resultsShown }) => {
+export const InputModule = ({
+  onStartFetch,
+  resultsShown,
+  // fetchAutocomplete
+}) => {
   const [isFocused, setIsFocused] = useState(false);
   const [value, setValue] = useState("");
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const [selectedDropdownItem, setSelectedDropdownItem] = useState(null);
+  const [autocompleteData, setAutocompleteData] = useState([])
 
   const clickListener = e => {
     // console.log(e.target.id)
@@ -28,9 +34,11 @@ export const InputModule = ({ onStartFetch, resultsShown }) => {
     document.addEventListener("click", clickListener);
   }, []);
 
-  const startSearching = event => {
+  const startSearching = async event => {
     const value = event.target.value.trim();
     // onStartFetch(value);
+    // fetchAutocomplete(value)
+    setAutocompleteData(await ApiService(ENDPOINTS.autocomplete)(value));
     setIsDropdownVisible(true);
   };
 
@@ -42,12 +50,13 @@ export const InputModule = ({ onStartFetch, resultsShown }) => {
     setSelectedDropdownItem(null);
   };
 
-  const debouncedStartSearching = debounce(event => startSearching(event), 500);
+  // const debouncedStartSearching = debounce(event => startSearching(event), 10);
 
   const changeHandler = event => {
     event.persist();
     setValue(event.target.value);
-    return debouncedStartSearching(event);
+    // return debouncedStartSearching(event);
+    startSearching(event)
   };
 
   const focusHandler = () => {
@@ -100,7 +109,7 @@ export const InputModule = ({ onStartFetch, resultsShown }) => {
               id={"input"}
             />
             <AutocompleteDropdown
-              data={data}
+              data={autocompleteData}
               visible={isDropdownVisible}
               selectedItem={selectedDropdownItem}
               onChooseItem={handleChooseItem}

@@ -48,7 +48,7 @@ const Dropdown = styled.div`
   width: 100%;
   top: 0;
   left: 0;
-  min-height: 240px;
+  /* min-height: 240px; */
   border-radius: 20px;
 
   margin-top: 52px;
