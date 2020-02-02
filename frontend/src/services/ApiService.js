@@ -21,7 +21,6 @@ const defaultOptions = {
 const get = async url => {
   try {
     const response = await fetch(url, defaultOptions);
-    
     return await response.json();
   } catch (err) {
     console.log(err);
@@ -32,5 +31,8 @@ const get = async url => {
 export const ApiService = uri => {
   const url = `${config.apiUrl}${uri}`;
 
-  return query => get(`${url}${params.q}${query}`);
+  return (query, page) =>
+    get(
+      `${url}${params.q}${query}${page !== undefined && "&from=" + page * 10}`
+    );
 };

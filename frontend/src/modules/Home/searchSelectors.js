@@ -1,10 +1,16 @@
 import { createSelector } from "reselect";
 
-const selectSearchData = ({ searchResults }) => searchResults.searchData;
+export const selectSearchData = ({ searchResults }) =>
+  searchResults.searchData || {};
 
-const selectSearchQuery = ({ searchResults }) => searchResults.query;
+export const selectSearchQuery = ({ searchResults }) => searchResults.query;
 
-export const selectSearchDataByValue = createSelector(
+export const selectSearchDataListByValue = createSelector(
   [selectSearchData, selectSearchQuery],
-  (data, query) => data[query] || []
+  (data, query) => (data[query] ? data[query].list : [])
+);
+
+export const selectSearchPage = createSelector(
+  [selectSearchData, selectSearchQuery],
+  (data, query) => (data[query] ? data[query].page : undefined)
 );

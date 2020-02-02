@@ -9,7 +9,7 @@ export const useScroll = callback => {
     prevScroll.current = document.documentElement.scrollTop;
   };
 
-  const handleScroll = () => throttle(throttledScrollHandler, 100);
+  const handleScroll = () => throttle(throttledScrollHandler, 200);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll());

@@ -1,4 +1,4 @@
-import { SAVE_SEARCH_DATA } from "./constants";
+import { SAVE_SEARCH_DATA, SET_SEARCH_QUERY } from "./constants";
 import { normalizeSearchData } from "./normalizer";
 
 const initialState = {
@@ -9,14 +9,25 @@ const initialState = {
 export const searchReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case SAVE_SEARCH_DATA:
-      // console.log("qot it", normalizeSearchData(payload.data));
+      const statedQuery = state.searchData[payload.query];
+      const prevList = statedQuery ? statedQuery.list : [];
+
       return {
         ...state,
         searchData: {
           ...state.searchData,
-          [payload.query]: normalizeSearchData(payload.data)
+          [payload.query]: {
+            list: [...prevList, ...normalizeSearchData(payload.data)],
+            page: payload.page
+          }
         },
         query: payload.query
+      };
+
+    case SET_SEARCH_QUERY:
+      return {
+        ...state,
+        query: payload
       };
     default:
       return state;
