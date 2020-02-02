@@ -33,6 +33,8 @@ export const ApiService = uri => {
 
   return (query, page) =>
     get(
-      `${url}${params.q}${query}${page !== undefined && "&from=" + page * 10}`
+      `${url}${params.q}${query}${
+        page !== undefined ? "&from=" + page * 10 : ""
+      }`
     );
 };

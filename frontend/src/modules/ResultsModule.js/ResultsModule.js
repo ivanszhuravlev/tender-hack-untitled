@@ -12,7 +12,7 @@ import {
 import { ResultEmpty } from "./ResultEmpty";
 import { getSearchResults } from "../Home/searchActions";
 
-export const ResultsModule = ({ resultsShown }) => {
+export const ResultsModule = ({}) => {
   const [opacity, setOpacity] = useState(0);
   const dispatch = useDispatch();
   const query = useSelector(selectSearchQuery);
@@ -20,38 +20,36 @@ export const ResultsModule = ({ resultsShown }) => {
   const data = useSelector(selectSearchDataListByValue);
 
   useEffect(() => {
-    setOpacity(resultsShown === null ? 0 : 1);
-  }, [resultsShown]);
+    setTimeout(() => setOpacity(1), 200);
+  }, []);
 
   const handleLoad = () => dispatch(getSearchResults(query, page));
 
   return (
-    resultsShown && (
-      <ResultsCard opacity={opacity}>
-        {data.length ? (
-          <ListView
-            data={data}
-            keyExtractor={({ id }) => `${id}`}
-            loaderCallback={handleLoad}
-            renderItem={(
-              { title, category, subCategory, id, ...data },
-              index
-            ) => (
-              <>
-                {index !== 0 && <ItemSeparator />}
-                <ResultItem
-                  title={title}
-                  category={category}
-                  subCategory={subCategory}
-                  data={data}
-                />
-              </>
-            )}
-          />
-        ) : (
-          <ResultEmpty />
-        )}
-      </ResultsCard>
-    )
+    <ResultsCard opacity={opacity}>
+      {data.length ? (
+        <ListView
+          data={data}
+          keyExtractor={({ id }) => `${id}`}
+          loaderCallback={handleLoad}
+          renderItem={(
+            { title, category, subCategory, id, ...data },
+            index
+          ) => (
+            <>
+              {index !== 0 && <ItemSeparator />}
+              <ResultItem
+                title={title}
+                category={category}
+                subCategory={subCategory}
+                data={data}
+              />
+            </>
+          )}
+        />
+      ) : (
+        <ResultEmpty />
+      )}
+    </ResultsCard>
   );
 };

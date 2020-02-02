@@ -1,5 +1,7 @@
 import { createSelector } from "reselect";
 
+export const selectHistory = ({ historyReducer }) => historyReducer.history;
+
 export const selectSearchData = ({ searchResults }) =>
   searchResults.searchData || {};
 

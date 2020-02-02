@@ -1,4 +1,4 @@
-import { SAVE_SEARCH_DATA, SET_SEARCH_QUERY } from "./constants";
+import { SAVE_SEARCH_DATA, SET_SEARCH_QUERY, SAVE_HISTORY } from "./constants";
 import { ApiService, ENDPOINTS } from "../../services/ApiService";
 
 export const getSearchResults = (searchQuery, passedPage) => async (
@@ -25,3 +25,6 @@ export const setSearchQuery = searchQuery => dispatch =>
     type: SET_SEARCH_QUERY,
     payload: searchQuery
   });
+
+export const saveToHistory = item => dispatch =>
+  dispatch({ type: SAVE_HISTORY, payload: item });
