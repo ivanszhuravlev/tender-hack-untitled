@@ -1,4 +1,4 @@
-import React, { useState, useEffect, memo, useRef, useMemo } from "react";
+import React, { memo, useRef, useMemo } from "react";
 import { isEqual } from "lodash";
 import { useScroll } from "./useScroll";
 
@@ -12,8 +12,6 @@ export const ListView = memo(
     loaderCallback = () => {},
     keyExtractor = () => {}
   }) => {
-    const [page, setPage] = useState(1);
-
     const listRef = useRef({});
 
     const listItems = useMemo(
@@ -22,7 +20,7 @@ export const ListView = memo(
           ...item,
           key: keyExtractor(data[index], index)
         })),
-      [data.length]
+      [data]
     );
 
     const checkScrollPosition = () => {
@@ -33,14 +31,10 @@ export const ListView = memo(
       const totalHeight =
         listRef.current.offsetHeight + listRef.current.offsetTop;
 
-      if (scrollEndPosition >= totalHeight - listOffset) setPage(page + 1);
+      if (scrollEndPosition >= totalHeight - listOffset) loaderCallback();
     };
 
     useScroll(checkScrollPosition);
-
-    useEffect(() => {
-      (page > 1 || !data.length) && loaderCallback(page);
-    }, [page]);
 
     return (
       <div ref={listRef} className={className}>
